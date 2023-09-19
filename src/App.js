@@ -1,17 +1,47 @@
-import Sidebar from "./components/Sidebar";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Sidebar from "./components/common/Sidebar";
+import Navbar from "./components/common/Navbar";
+import Footer from "./components/common/Footer";
+import PartnersList from "./components/Partners/PartnersList";
+import AccountsList from "./components/Accounts/AccountsList"; // Import other components
+import InvoicesList from './components/Invoices/InvoicesList';
+import MobilePaymentsList from './components/MobilePayments/MobilePaymentsList';
+import ContractsList from './components/Contracts/ContractsList';
+import DriversList from './components/Drivers/DriversList';
+import VehiclesList from './components/Vehicles/VehiclesList';
+import TransactionsList from './components/Transactions/TransactionsList';
 
 
-function App(){
+function App() {
   return (
-    <div className="h-screen">
-      <Navbar />
-      <Sidebar />
-      <Footer />
-    </div>
-
+    <Router>
+      <div className="h-screen flex flex-col">
+        <Navbar />
+        <div className="flex flex-grow">
+          <Sidebar />
+          <div className="flex-grow">
+            <Routes>
+              <Route path="/partners" element={<PartnersList />} />
+              <Route path="/accounts" element={<AccountsList />} />
+              <Route path="/contracts" element={<ContractsList />} />
+              <Route path="/invoices" element={<InvoicesList />} /> 
+              <Route path="/mobile-payments" element={<MobilePaymentsList />} />
+              <Route path="/drivers" element={<DriversList />} />
+              <Route path="/vehicles" element={<VehiclesList />} />
+              <Route path="/transactions" element={<TransactionsList />} />
+              {/* ... */}
+            </Routes>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    </Router>
   )
 }
 
+
+
 export default App;
+

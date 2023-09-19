@@ -11,7 +11,7 @@ function Navbar() {
             to="/login"
             className="text-lg font-medium mr-4 hover:underline"
           >
-            Login
+            Sign In
           </Link>
           <Link
             to="/register"
