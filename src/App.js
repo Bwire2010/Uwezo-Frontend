@@ -5,6 +5,9 @@ import Sidebar from "./components/common/Sidebar";
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
 import PartnersList from "./components/Partners/PartnersList";
+import PartnerDetails from "./components/Partners/PartnerDetails";
+import PartnerForm from "./components/Partners/PartnerForm";
+
 import AccountsList from "./components/Accounts/AccountsList"; // Import other components
 import InvoicesList from './components/Invoices/InvoicesList';
 import MobilePaymentsList from './components/MobilePayments/MobilePaymentsList';
@@ -24,6 +27,10 @@ function App() {
           <div className="flex-grow">
             <Routes>
               <Route path="/partners" element={<PartnersList />} />
+              <Route path="/partners/:id" element={<PartnerDetails />} />
+              <Route path="/partner-form" element={<PartnerForm />} />
+
+
               <Route path="/accounts" element={<AccountsList />} />
               <Route path="/contracts" element={<ContractsList />} />
               <Route path="/invoices" element={<InvoicesList />} /> 

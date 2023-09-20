@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function PartnerForm() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     first_name: '',
     middle_name: '',
     last_name: '',
     date_of_birth: '',
-    document_type: 'NATIONAL_ID', // Default value
+    document_type: 'national_id',
     document_number: '',
     msisdn: '',
     email: '',
     document: '',
-    user: null, // User ID will be handled separately
+    // Remove user from the initial state since it's commented out in the form
   });
 
   const handleChange = (e) => {
@@ -21,9 +24,45 @@ function PartnerForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can send the formData to your API endpoint for saving data.
-    // Example: axios.post('YOUR_API_ENDPOINT', formData)
-    console.log('Form data submitted:', formData);
+
+    const requestBody = JSON.stringify(formData);
+    console.log('Request Body:', requestBody);
+
+    fetch('http://localhost:8000/autonav/partners/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: requestBody,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log('Form data submitted:', formData);
+        console.log('Server response:', data);
+
+        navigate(`/partners/${data.id}`);
+        
+        // Clear the form after successful submission
+        setFormData({
+          first_name: '',
+          middle_name: '',
+          last_name: '',
+          date_of_birth: '',
+          document_type: 'national_id',
+          document_number: '',
+          msisdn: '',
+          email: '',
+          document: '',
+        });
+      })
+      .catch((error) => {
+        console.error('Error submitting data:', error);
+      });
   };
 
   return (
@@ -97,9 +136,9 @@ function PartnerForm() {
               className="mt-1 p-2 border rounded-md w-full"
             >
               {/* Add options for document types here */}
-              <option value="NATIONAL_ID">National ID</option>
-              <option value="PASSPORT">Passport</option>
-              <option value="MILITARY_ID">Military ID</option>
+              <option value="national_id">National ID</option>
+              <option value="passport">Passport</option>
+              <option value="military_id">Military ID</option>
               {/* Add more document types as needed */}
             </select>
           </div>
@@ -155,20 +194,8 @@ function PartnerForm() {
               className="mt-1 p-2 border rounded-md w-full"
             ></textarea>
           </div>
-          <div>
-            <label htmlFor="user" className="block text-sm font-medium text-gray-700">
-              User
-            </label>
-            <input
-              type="text"
-              id="user"
-              name="user"
-              value={formData.user}
-              onChange={handleChange}
-              className="mt-1 p-2 border rounded-md w-full"
-            />
-          </div>
         </div>
+
         <div className="mt-4">
           <button
             type="submit"
