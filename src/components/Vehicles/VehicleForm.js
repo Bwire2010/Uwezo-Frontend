@@ -49,8 +49,8 @@ function VehicleForm() {
             .then((response) => response.json())
             .then((data) => {
                 console.log('Vehicle data submitted:', data);
-                // Handle success or navigate to a different page
-                navigate('/vehicles/:id');
+            
+                navigate(`/vehicles/${data.id}`);
             })
             .catch((error) => {
                 console.error('Error submitting data:', error);

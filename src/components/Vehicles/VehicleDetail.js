@@ -33,10 +33,10 @@ function VehicleDetail() {
   const handleSave = () => {
     // Send the editedVehicle data to your API to save changes
     // Example: axios.put(`http://localhost:8000/autonav/vehicles/${id}`, editedVehicle)
-    console.log('Edited Vehicle Data:', editedVehicle);
-
+    //console.log('Edited Vehicle Data:', editedVehicle);
+    console.log('Edited Vehicle Data Before API Request:', editedVehicle);
     // Make the API request
-    fetch(`http://localhost:8000/autonav/vehicles/${id}/`, {
+    fetch(`http://localhost:8000/autonav/vehicles/${id}`, {
       method: 'PUT', // Change to 'POST' if that's the correct method
       headers: {
         'Content-Type': 'application/json',
