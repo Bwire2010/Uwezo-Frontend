@@ -14,7 +14,10 @@ import MobilePaymentsList from './components/MobilePayments/MobilePaymentsList';
 import ContractsList from './components/Contracts/ContractsList';
 import DriversList from './components/Drivers/DriversList';
 import VehiclesList from './components/Vehicles/VehiclesList';
+import VehicleForm from './components/Vehicles/VehicleForm';
+import VehicleDetail from './components/Vehicles/VehicleDetail';
 import TransactionsList from './components/Transactions/TransactionsList';
+
 
 
 function App() {
@@ -26,9 +29,14 @@ function App() {
           <Sidebar />
           <div className="flex-grow">
             <Routes>
+              {/* Routes for Partner-related components */}
               <Route path="/partners" element={<PartnersList />} />
               <Route path="/partners/:id" element={<PartnerDetails />} />
               <Route path="/partner-form" element={<PartnerForm />} />
+              {/* Routes for Partner-related components */}
+              <Route path="/vehicles" element={<VehiclesList />} />
+              <Route path="/vehicles/:id" element={<VehicleDetail />} />
+              <Route path="/vehicle-form" element={<VehicleForm />} />
 
 
               <Route path="/accounts" element={<AccountsList />} />
@@ -36,7 +44,7 @@ function App() {
               <Route path="/invoices" element={<InvoicesList />} /> 
               <Route path="/mobile-payments" element={<MobilePaymentsList />} />
               <Route path="/drivers" element={<DriversList />} />
-              <Route path="/vehicles" element={<VehiclesList />} />
+              
               <Route path="/transactions" element={<TransactionsList />} />
               {/* ... */}
             </Routes>
