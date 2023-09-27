@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+
 function PartnerDetails() {
   const { id } = useParams();
   const [partner, setPartner] = useState(null);
@@ -28,7 +29,7 @@ function PartnerDetails() {
     // Send the editedPartner data to your API to save changes
     // Example: axios.put(`http://localhost:8000/autonav/partners/${id}`, editedPartner)
     console.log('Edited Partner Data:', editedPartner);
-  
+
     // Make the API request
     fetch(`http://localhost:8000/autonav/partners/${id}/`, {
       method: 'PUT', // Change to 'POST' if that's the correct method
@@ -64,7 +65,7 @@ function PartnerDetails() {
   const handleDelete = () => {
     // Assuming you have an API endpoint for deleting partners (replace with your actual endpoint)
     const deleteEndpoint = `http://localhost:8000/autonav/partners/${id}`;
-  
+
     fetch(deleteEndpoint, {
       method: 'DELETE',
       headers: {
@@ -85,6 +86,9 @@ function PartnerDetails() {
         // Handle network errors here
         console.error('Network error:', error);
       });
+  };
+  const handleBackClick = () => {
+    navigate('/partners'); // Navigate back to the "PartnersList" route.
   };
 
   if (!partner) {
@@ -282,8 +286,18 @@ function PartnerDetails() {
               onClick={handleEdit}
               className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700 mr-2"
             >
-              Edit
+              Update
             </button>
+            
+            
+            <button
+              type="button"
+              onClick={handleBackClick}
+              className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 "
+            >
+              Back
+            </button>
+            <span className="ml-2 mr-2">&#8592;</span> {/* Unicode arrow character for back */}
             <button
               onClick={handleDelete}
               className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:bg-red-700"

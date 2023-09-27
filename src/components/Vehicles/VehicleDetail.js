@@ -274,7 +274,7 @@ function VehicleDetail() {
               onClick={handleEdit}
               className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700 mr-2"
             >
-              Edit
+              Update
             </button>
             <button
               onClick={handleDelete}

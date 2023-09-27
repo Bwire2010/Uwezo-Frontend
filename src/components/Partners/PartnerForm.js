@@ -64,6 +64,10 @@ function PartnerForm() {
         console.error('Error submitting data:', error);
       });
   };
+  const handleBackClick = () => {
+    navigate('/partners'); // Navigate back to the "PartnersList" route.
+  };
+
 
   return (
     <div className="max-w-3/4 mx-auto p-6 bg-white rounded-md shadow-md">
@@ -202,6 +206,14 @@ function PartnerForm() {
             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700"
           >
             Save
+          </button>
+          <span className="ml-2 mr-2">&#8592;</span> {/* Unicode arrow character for back */}
+          <button
+            type="button"
+            onClick={handleBackClick}
+            className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+          >
+             Back
           </button>
         </div>
       </form>
