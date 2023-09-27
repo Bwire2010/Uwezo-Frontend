@@ -288,8 +288,6 @@ function PartnerDetails() {
             >
               Update
             </button>
-            
-            
             <button
               type="button"
               onClick={handleBackClick}

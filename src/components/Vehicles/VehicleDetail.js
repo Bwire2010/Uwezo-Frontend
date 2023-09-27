@@ -92,6 +92,10 @@ function VehicleDetail() {
     setEditedVehicle(null);
   };
 
+  const handleBackClick = () => {
+    navigate('/vehicles'); // Navigate back to the "PartnersList" route.
+  };
+
   if (!vehicle) {
     return <div>Loading...</div>;
   }
@@ -276,6 +280,14 @@ function VehicleDetail() {
             >
               Update
             </button>
+            <button
+              type="button"
+              onClick={handleBackClick}
+              className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 "
+            >
+              Back
+            </button>
+            <span className="ml-2 mr-2">&#8592;</span> {/* Unicode arrow character for back */}
             <button
               onClick={handleDelete}
               className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:bg-red-700"
