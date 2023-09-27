@@ -7,16 +7,21 @@ import Footer from "./components/common/Footer";
 import PartnersList from "./components/Partners/PartnersList";
 import PartnerDetails from "./components/Partners/PartnerDetails";
 import PartnerForm from "./components/Partners/PartnerForm";
+import VehiclesList from './components/Vehicles/VehiclesList';
+import VehicleForm from './components/Vehicles/VehicleForm';
+import VehicleDetail from './components/Vehicles/VehicleDetail';
+import DriversList from './components/Drivers/DriversList';
+import DriverForm from './components/Drivers/DriverForm';
+import DriverDetails from './components/Drivers/DriverDetails';
 
 import AccountsList from "./components/Accounts/AccountsList"; // Import other components
 import InvoicesList from './components/Invoices/InvoicesList';
 import MobilePaymentsList from './components/MobilePayments/MobilePaymentsList';
 import ContractsList from './components/Contracts/ContractsList';
-import DriversList from './components/Drivers/DriversList';
-import VehiclesList from './components/Vehicles/VehiclesList';
-import VehicleForm from './components/Vehicles/VehicleForm';
-import VehicleDetail from './components/Vehicles/VehicleDetail';
+
+
 import TransactionsList from './components/Transactions/TransactionsList';
+
 
 
 
@@ -33,17 +38,20 @@ function App() {
               <Route path="/partners" element={<PartnersList />} />
               <Route path="/partners/:id" element={<PartnerDetails />} />
               <Route path="/partner-form" element={<PartnerForm />} />
-              {/* Routes for Partner-related components */}
+              {/* Routes for vehicle-related components */}
               <Route path="/vehicles" element={<VehiclesList />} />
               <Route path="/vehicles/:id" element={<VehicleDetail />} />
               <Route path="/vehicle-form" element={<VehicleForm />} />
-
+              {/* Routes for drivers-related components */}
+              <Route path="/drivers" element={<DriversList />} />
+              <Route path="/drivers/:id" element={<DriverDetails />} />
+              <Route path="/driver-form" element={<DriverForm />} />
 
               <Route path="/accounts" element={<AccountsList />} />
               <Route path="/contracts" element={<ContractsList />} />
               <Route path="/invoices" element={<InvoicesList />} /> 
               <Route path="/mobile-payments" element={<MobilePaymentsList />} />
-              <Route path="/drivers" element={<DriversList />} />
+              
               
               <Route path="/transactions" element={<TransactionsList />} />
               {/* ... */}
